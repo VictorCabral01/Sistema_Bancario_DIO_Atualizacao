@@ -33,6 +33,9 @@ def retirar(saque_novo):
 def exibir_extrato(saldo):
     return saldo
 
+def new_opcoes():
+    return new_opcoes
+
 def login ():    
     while True:
 
@@ -51,15 +54,25 @@ def login ():
             
         elif novas_opcoes == '2': 
             
-            nome = input('Digite seu nome: ')  
+            nome_login = input('Digite seu nome: ')  
             senha  = getpass('Digite sua senha: ')
-            if nome == novo_nome and senha == criar_senha:
-                
-                break
-            else:
-                print('Erro')   
-
-def novas_opcoes():
+            i = (len(novo_usuarios)) - 1
+            while i >= 0:
+                if nome_login == novo_usuarios[i][0] and senha == novo_usuarios[i][1] :
+                     
+                    print ('logado')     
+                    return new_opcoes()  
+                elif nome_login is not novo_usuarios[i][0] and senha is not novo_usuarios[i][1] :
+                    print('Usuário Errado')  
+                    break    
+                else:
+                    i -= 1
+                    break
+                 
+  
+login()
+def new_opcoes():
+    
     while True:
 
         opcao = input('''
@@ -102,10 +115,8 @@ def novas_opcoes():
         elif opcao == '4':
             
             break    
-
-
-
-    
+      
+new_opcoes()
     
     
     
